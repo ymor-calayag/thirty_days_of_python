@@ -123,3 +123,81 @@ def joining_list(lst_one, lst_two):
     print(full_stack)
 
 joining_list(front_end, back_end)
+
+# Exercises: Level 2
+# The following is a list of 10 students ages:
+# ages = [19, 22, 19, 24, 20, 25, 26, 24, 25, 24]
+# Sort the list and find the min and max age
+ages = [19, 22, 19, 24, 20, 25, 26, 24, 25, 24]
+ages_copy = ages.copy()
+
+print(ages_copy)
+ages_copy.sort()
+print(ages_copy)
+print(min(ages_copy))
+print(max(ages_copy))
+
+min_age = min(ages_copy)
+max_age = max(ages_copy)
+
+# Add the min age and the max age again to the list
+ages_copy.append(min_age)
+ages_copy.append(max_age)
+print(ages_copy)
+
+# Find the median age (one middle item or two middle items divided by two)
+def find_median(lst):
+    lst_copy = lst.copy()
+    mid_of_list = len(lst_copy) // 2
+
+    if len(lst_copy) % 2 == 0:
+        print(lst_copy[mid_of_list - 1: mid_of_list + 1])
+    else:
+        print(lst_copy[mid_of_list])
+
+find_median(ages)
+
+
+# Find the average age (sum of all items divided by their number)
+#Short way
+print(sum(ages) / len(ages)) 
+#long way
+total = 0
+for i in ages:
+    total += i
+print(f"Average age: {total / len(ages)}")
+
+# Find the range of the ages (max minus min)
+print(f"Range of ages: {max_age - min_age}")
+
+# Compare the value of (min - average) and (max - average), use abs() method
+average = sum(ages) / len(ages)
+print(abs(max_age - average))
+print(abs(min_age - average))
+
+# Find the middle country(ies) in the countries list
+countries = ['China', 'Russia', 'USA', 'Finland', 'Sweden', 'Norway', 'Denmark']
+find_median(countries)
+
+# Divide the countries list into two equal lists if it is even if not one more country for the first half.
+def divide_list(lst):
+    lst_copy = lst.copy()
+    lst_midle_item = len(lst_copy) // 2
+
+    if len(lst_copy) % 2 == 0:
+        first_half = lst_copy[0:lst_midle_item]
+        second_half = lst_copy[lst_midle_item:]
+        print(first_half)
+        print(second_half)
+    else:
+        first_half = lst_copy[0:lst_midle_item + 1]
+        second_half = lst_copy[lst_midle_item + 1:]
+        print(first_half)
+        print(second_half)
+
+divide_list(countries)
+
+
+# ['China', 'Russia', 'USA', 'Finland', 'Sweden', 'Norway', 'Denmark']. Unpack the first three countries and the rest as scandic countries.
+first, second, third, *scandic = countries
+print(first, second, third, scandic)
